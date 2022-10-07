@@ -4,18 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="./img/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/main.css" />
@@ -26,44 +15,42 @@
       <section class="logo">
         <img class="img" src="./images/Logo.png" alt="Logo de gromarant" />
         <h1>GromaBooks</h1>
-        <nav class="menu-nav">
-          <ul class="menu">
-            <li class="item">
-              <span class="fas fa-plus-circle"> </span>
-            </li>
-          </ul>
-        </nav>
-      <a class="contact" href="mailto:contacto@gromarant.com">contacto@gromarant.com</a>
+        <a class="contact" href="mailto:contacto@gromarant.com">contacto@gromarant.com</a>
       </section>
     </header>
 
     <main>
-      <section class="new-form new-form-act collapsed">
+      <aside class="aside">
+        <ul class="menu">
           <h2 class="title">Add a new book?</h2>
-        <form class="form">
-          <input class="input pictute-input" type="date" placeholder="Publication date" required/>
-          <input class="input title-input" type="text" placeholder="Tittle" required />
-          <input class="input" type="text" placeholder="Autor" />
-          <input class="input descript-input" type="text" placeholder="Descripción" required />
-          <label class="error-label"></label>
-          <button class="button add-button-act">Add Book</button>
-          <button class="button-cancel">Cancel</button>
-        </form>
-      </section>
+          <li class="item">
+            <span class="material-icons plusIcon">add_circle</span>
+          </li>
+        </ul>
+        <div class="new-form new-form-act collapsed">
+          <form class="new-from-inputs" method="/">
+            <input class="input title-input" type="text" placeholder="Tittle"/>
+            <input class="input autor-input" type="text" placeholder="Autor" />
+            <input class="input descript-input" type="text" placeholder="Description"/>
+            <label class="error-label"></label>
+            <button class="button form-button add-button-act">Add Book</button>
+            <button class="form-button button-cancel">Cancel</button>
+          </form>
+        </div>
+      </aside>
 
       <section class="about-us">
-        <h1 class="title">GromaBooks</h1>
         <h2 class="subtitle">Books for a Ux Frontend Developer</h2>
       </section>
 
       <section class="search">
         <h2 class="title">Find a book</h2>
-        <form class="form">
-          <input class="input search-description" type="text" placeholder="Description" />
-          <input class="input search-autor" type="select" name="autor" placeholder="Autor" id="autor"/>
-          <label class="error-search"></label>
+        <form class="form-search">
+          <input class="input input-search search-title" type="text" placeholder="Title" />
+          <input class="input input-search search-autor" type="select" name="autor" placeholder="Autor" id="autor"/>
           <button class="button search-button">Search</button>
         </form>
+        <p class="error-search"></p>
       </section>
 
       <section class="data book-data">
@@ -73,6 +60,7 @@
     </main>
     <footer class="footer">
       <h3 class="subtittle copy">&copy; Gromarant 2022</h3>
+      <a class="portfolio" href="https://www.gromarant.com/" >www.gromarant.com</a>
     </footer>
     <script src="./js/main.js"></script>
   </body>
