@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" href="./img/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="./images/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/main.css" />
     <title>gromaBooks</title>
@@ -30,10 +30,10 @@
         <div class="new-form new-form-act collapsed">
           <form class="new-from-inputs" method="/">
             <input class="input title-input" type="text" placeholder="Tittle"/>
-            <input class="input autor-input" type="text" placeholder="Autor" />
+            <input class="input author-input" type="text" placeholder="Autor" />
             <input class="input descript-input" type="text" placeholder="Description"/>
             <label class="error-label"></label>
-            <button class="button form-button add-button-act">Add Book</button>
+            <button class="button form-button" id="add-button-act">Add Book</button>
             <button class="form-button button-cancel">Cancel</button>
           </form>
         </div>
@@ -46,17 +46,45 @@
       <section class="search">
         <h2 class="title">Find a book</h2>
         <form class="form-search">
-          <input class="input input-search search-title" type="text" placeholder="Title" />
-          <input class="input input-search search-autor" type="select" name="autor" placeholder="Autor" id="autor"/>
+          <input class="input input-search search-title" id="titleSearchInput" type="text" placeholder="Title" />
+          <input class="input input-search search-author" type="select" name="autor" placeholder="Author" id="authorSearchInput"/>
           <button class="button search-button">Search</button>
         </form>
         <p class="error-search"></p>
       </section>
 
+      
+      
       <section class="data book-data">
         <ul class="list">
+
+          <li class="card">
+            <article>
+              <img class="card-image" src="https://images-na.ssl-images-amazon.com/images/I/61RRViAYqdL.jpg" />
+              <h3 class="card-title"><strong>Codigo Limpio:</strong> Manual de estilo para el desarrollo ágil de software</h3>
+              <h4 class="card-author">Robert C. Martin</h4>
+              <p class="card-description">Clean Code, o Código Limpio, es una filosofía de desarrollo de software que consiste en aplicar técnicas simples que facilitan la escritura y lectura de un código, volviéndolo más fácil de entender</p>
+            </article>
+          </li>
+
         </ul>
       </section>
+      
+      
+        <!-- <section class="votation-card">
+          <div class="votation-icon">
+            <span class="material-icons icons-outlined expandIcon">expand_circle_down</span>
+          </div>
+            <h1 class="votation-Title">Code complete</h1>
+            <h3 class="votation-autor">Richard</h3>
+          <div class="votation-main">
+            <p class="votation-descript collapsed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum itaque repudiandae laboriosam perspiciatis? Animi corporis et optio culpa sed iure magnam quis, est mollitia officia tempora eveniet, vero similique consequatur?</p>
+          </div>
+          <div class="votation-items">
+            <span class="material-icons likeIcon">thumb_up</span>
+            <span class="material-icons dislikeIcon">thumb_down_alt</span>
+          </div> -->
+      
     </main>
     <footer class="footer">
       <h3 class="subtittle copy">&copy; Gromarant 2022</h3>

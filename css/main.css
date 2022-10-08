@@ -44,6 +44,8 @@
     text-decoration: none;
   }
 
+  .main{
+  }
   .aside {
     display: flex;
     justify-content: space-around;
@@ -74,14 +76,12 @@
     width: 100%;
     height: fit-content;
     background-color: white;
-    box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%),
-      0 0.9375rem 1.40625rem rgb(4 9 20 / 3%),
-      0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
-      border-radius: 0rem 0rem 0.5rem 0.5rem ;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    border-radius: 0rem 0rem 0.5rem 0.5rem ;
     z-index: 1000;
     display: flex;
     justify-content: center;
-    padding: 1.5rem 2rem;
+    padding: 1rem 1.5rem;
   }
   .new-from-inputs {
     display: flex;
@@ -111,11 +111,11 @@
     margin: 5px;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    border: 0.5px solid orange;
+    border: 0.5px solid rgb(182, 124, 16);
     color: grey;
   }
   .button {
-    background-color: orange;
+    background-color: rgb(228, 152, 11);
     border: none;
     border-radius: 0.5rem;
     padding: 8px;
@@ -139,16 +139,12 @@
   }
 
   .about-us {
-    background-image: url("../img/fondo.jpeg");
-    width: 100%;
-    height: 50vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    align-items: center;
     display: flex;
     flex-direction: column;
+    height: 45vh;
     justify-content: center;
-    align-items: center;
+    width: 100%;
   }
   .about-us .subtitle {
     color: rgba(40, 78, 91, 1);
@@ -156,24 +152,29 @@
   }
   
   .search {
-    width: 80%;
+    align-items: center;
     background-color: white;
-    box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%),
-      0 0.9375rem 1.40625rem rgb(4 9 20 / 3%),
-      0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
-      border-radius: 1rem;
-    height: 150px;
-    transform: translate(10%, -50%);
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 120px;
+    justify-content: space-around;
+    transform: translate(10%, -50%);
+    width: 80%;
   }
   .search .title {
     color: rgba(40, 78, 91, 1);
-    font-size: 36px(40, 78, 91, 1);
     font-size: 17px;
     font-weight: 600;
+  }
+  .form-search {
+    display: flex;
+    justify-content: space-around;
+  }
+  .input-search {
+    height: 32px;
+    width: 34%;
   }
   .search-button {
     height: 32px;
@@ -183,6 +184,49 @@
   }
   .error-search {
     margin-top: 0.8rem;
+  }
+
+  .votation-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  }
+  .votation-card {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    height: fit-content;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 20%;
+  }
+  .votation-icon {
+    display: flex;
+    justify-content: right;
+  }
+  .votation-Title {
+    font-size: 16px;
+  }
+  .votation-items {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+  .likeIcon {
+    color: rgb(37, 161, 68);
+    border: solid 0.1rem rgb(37, 161, 68);
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
+  }
+  .dislikeIcon {
+    color: rgb(228, 111, 15);
+    border: solid 0.1rem rgb(228, 111, 15);
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
   }
 
   .data {
@@ -203,9 +247,7 @@
     align-items: center;
     background-color: white;
     border-radius: 0.5rem;
-    box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%),
-      0 0.9375rem 1.40625rem rgb(4 9 20 / 3%),
-      0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -215,9 +257,10 @@
     padding: 10px;
     text-align: center;
     transition: 0.25s all;
-    width: 30vw;
+    height: 200px;
+    width: 300px;
   }
-  .card-img {
+  .card-image{
     width: 40%;
     height: 50%;
     object-fit: cover;
@@ -226,7 +269,7 @@
     font-weight: 600;
     padding: 10px;
   }
-  .card-race {
+  .card-author {
     padding: 10px;
   }
   .card-description {

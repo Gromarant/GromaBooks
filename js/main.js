@@ -1,33 +1,36 @@
 'use strict';
 
+//Data
 let books = [
   {
-    title: 'Código Limpio',
-    autor: 'Robert C. Martin',
+    title: 'Codigo Limpio',
+    author: 'Robert C. Martin',
     description: 'Clean Code, o Código Limpio, es una filosofía de desarrollo de software que consiste en aplicar técnicas simples que facilitan la escritura y lectura de un código, volviéndolo más fácil de entender',
     image: 'https://images-na.ssl-images-amazon.com/images/I/61RRViAYqdL.jpg',
   },
   {
-    title: 'Código Limpio',
-    autor: 'Robert C. Martin',
-    description: 'Clean Code, o Código Limpio, es una filosofía de desarrollo de software que consiste en aplicar técnicas simples que facilitan la escritura y lectura de un código, volviéndolo más fácil de entender',
+    title: 'Algoritmia rezonar para crear',
+    author: 'Christoph Haro',
+    description: 'Algoritmia rezonar para crear',
     image: 'https://images-na.ssl-images-amazon.com/images/I/61RRViAYqdL.jpg',
   },
   {
-    title: 'Código Limpio',
-    autor: 'Robert C. Martin',
-    description: 'Clean Code, o Código Limpio, es una filosofía de desarrollo de software que consiste en aplicar técnicas simples que facilitan la escritura y lectura de un código, volviéndolo más fácil de entender',
+    title: 'Sprint',
+    author: [ 'John Zeratsky','Branden Kowitz' ],
+    description: 'Sprint',
     image: 'https://images-na.ssl-images-amazon.com/images/I/61RRViAYqdL.jpg',
   },
 ];
 
-//elements
+let recommendedBooks = [];
+//---------------------------------------------------------------------------
+
+//selection of elements
 //inputs and buttons of new-form 
-const titleInput = document.querySelector('.title-input').value;
-const autorInput = document.querySelector('.autor-input').value;
-const descriptInput = document.querySelector('.descript-input').value;
-const requireInputs = [titleInput, descriptInput];
-const addFormButton = document.querySelector('.add-button-act');
+const titleInput = document.querySelector('.title-input');
+const authorInput = document.querySelector('.author-input');
+const descriptInput = document.querySelector('.descript-input');
+const formAddButton = document.querySelectorById('add-button-act');
 const cancelButton = document.querySelector('.button-cancel');
 const labelError = document.querySelector('.error-label');
 
@@ -37,23 +40,11 @@ const resultList = document.querySelector('.list');
 
 //inputs and buttons of search
 const searchIcon = document.querySelector('.plusIcon');
-const searchTitle = document.querySelector('.search-title').value;
-const searchAutor = document.querySelector('.search-autor').value;
+const searchTitleInput = document.getElementById('titleSearchInput');
+const searchAuthorInput = document.getElementById('authorSearchInput');
 const searchButton = document.querySelector('.search-button');
 const serchError = document.querySelector('.error-search');
-
-// renderBook function
-const renderBook = ( title, autor, description ) => {
-  `<li class="card">
-      <article>
-        <h3 class="card-title"><strong>${ title }:</strong> Manual de estilo para el desarrollo ágil de software</h3>
-        <h4 class="card-autor">${ autor }</h4>
-        <p class="card-description">${ description }</p>
-      </article>
-    </li>`;
-}
-
-itemCard.innerHTML = renderBook( titleInput, autorInput, descriptInput );
+//---------------------------------------------------------------------------
 
 //Display form
 const formSection = document.querySelector('.new-form-act');
@@ -73,43 +64,70 @@ const handleForm = (event) => {
 }
 addButton.addEventListener( 'click', handleForm );
 
-//validate search / Require inputs 
-addFormButton.addEventListener( 'click', () => {
-  if( titleInput !== '' ) {
-    books.push(
-      {
-        title: `${titleInput}`,
-        autor: `${autorInput}`,
-        description: `${descriptInput}`,
-      },
-    );
-  } else {
-      return labelError.innerHTML = 'debe agregar el título';
-  };
-});
-
 // form cancel
 cancelButton.addEventListener( 'click', () => {
-  if( titleInput !== '' || autorInput !== '' || descriptInput !== '' ) {
+  if( titleInput !== '' || authorInput !== '' || descriptInput !== '' ) {
     titleInput = '';
-    autorInput = '';
+    authorInput = '';
     descriptInput = '';
-    pictureInput = '';
     hideForm();
   };
 });
+//---------------------------------------------------------------------------
+
+const createBook = ( title, author, descript ) => (
+  {
+  title: `${title}`, 
+  author: `${author}`, 
+  description: `${descript}`,
+  }
+);
+
+// add a recommended book 
+formAddButton.addEventListener( 'click', ( event ) => {
+  event.preventDefault();
+  let title = titleInput.value;
+  let author = authorInput.value;
+  let descript = descriptInput.value;
+
+  if( title.length > 0 && author.length > 0 || descript.length > 0 ) {
+    recommendedBooks.push( createBook( title, author, descript ) )
+    } else {
+      return labelError.innerHTML = 'debe agregar un título';
+    };
+});
+
+//---------------------------------------------------------------------------
+
+// renderBook function
+const makeListItem = ({  title, author, description, image  }) => (
+  `<li class="card">
+      <article>
+        <img class="card-image" src=${ image } />
+        <h3 class="card-title"><strong>${ title }:</strong> Manual de estilo para el desarrollo ágil de software</h3>
+        <h4 class="card-author">${ author }</h4>
+        <p class="card-description">${ description }</p>
+      </article>
+    </li>`
+  );
+
+
+const renderResults = ( results ) => {
+  const listItems = results.map( result => makeListItem( result )).join('\n');
+  resultList.innerHTML = listItems;
+};
 
 // Autenticate bookSearch and throw error
-searchButton.addEventListener( 'click', () => {
-  if( books.title.includes( searchTitle) || books.autor.includes( searchAutor)) {
-    console.log(`si está ese libro`);
-  }
-  if( searchTitle === '' && searchAutor === '' ){
+searchButton.addEventListener( 'click', (event) => {
+  event.preventDefault();
+  if( searchTitleInput.value.length === 0 && searchAuthorInput.value.length === 0 ) {
     return serchError.innerHTML += 'Debe rellenar alguno de los campos';
   }
-  else {
-    return 'No se encontró ese libro';
-  };
-  searchTitle = '';
-  searchAutor = '';
+  const foundBooks = books.filter( book => {
+    const matchesTitle = searchTitleInput.value.length > 0 ? book.title.toLocaleLowerCase().includes(searchTitleInput.value.toLocaleLowerCase()) : true;
+    const matchesAuthor = searchAuthorInput.value.length > 0 ? book.author.toLocaleLowerCase().includes(searchAuthorInput.value.toLocaleLowerCase()) : true;
+    return matchesTitle && matchesAuthor;
+  });
+
+  renderResults(foundBooks);
 });
