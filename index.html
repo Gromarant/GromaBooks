@@ -20,71 +20,49 @@
     </header>
 
     <main>
-      <aside class="aside">
-        <ul class="menu">
-          <h2 class="title">Add a new book?</h2>
-          <li class="item">
-            <span class="material-icons plusIcon">add_circle</span>
-          </li>
-        </ul>
-        <div class="new-form new-form-act collapsed">
-          <form class="new-from-inputs" method="/">
-            <input class="input title-input" type="text" placeholder="Tittle"/>
-            <input class="input author-input" type="text" placeholder="Autor" />
-            <input class="input descript-input" type="text" placeholder="Description"/>
-            <label class="error-label"></label>
-            <button class="button form-button" id="add-button-act">Add Book</button>
-            <button class="form-button button-cancel">Cancel</button>
+      <div class="main-container">
+        <aside class="aside">
+          <ul class="menu">
+            <h2 class="title">Add a new book?</h2>
+            <li class="item">
+              <span class="material-icons plusIcon" title="Add a book that you want to see the review">add_circle</span>
+            </li>
+          </ul>
+          <div class="new-form new-form-act collapsed">
+            <form class="new-from-inputs" method="/">
+              <input class="input title-input" type="text" placeholder="Tittle"/>
+              <input class="input author-input" type="text" placeholder="Autor" />
+              <input class="input descript-input" type="text" placeholder="Description"/>
+              <label class="error-label"></label>
+              <button class="button form-button" id="add-button-act">Add Book</button>
+              <button class="form-button button-cancel">Cancel</button>
+            </form>
+          </div>
+        </aside>
+
+        <section class="about-us">
+          <h2 class="subtitle">Books for a Ux Frontend Developer</h2>
+        </section>
+
+        <section class="search">
+          <h2 class="title">Find a book</h2>
+          <form class="form-search">
+            <input class="input input-search search-title" id="titleSearchInput" type="text" placeholder="Title" />
+            <input class="input input-search search-author" type="select" name="autor" placeholder="Author" id="authorSearchInput"/>
+            <button class="button search-button">Search</button>
           </form>
-        </div>
-      </aside>
+          <p class="error-search"></p>
+        </section>
 
-      <section class="about-us">
-        <h2 class="subtitle">Books for a Ux Frontend Developer</h2>
-      </section>
-
-      <section class="search">
-        <h2 class="title">Find a book</h2>
-        <form class="form-search">
-          <input class="input input-search search-title" id="titleSearchInput" type="text" placeholder="Title" />
-          <input class="input input-search search-author" type="select" name="autor" placeholder="Author" id="authorSearchInput"/>
-          <button class="button search-button">Search</button>
-        </form>
-        <p class="error-search"></p>
-      </section>
-
-      
-      
-      <section class="data book-data">
-        <ul class="list">
-
-          <li class="card">
-            <article>
-              <img class="card-image" src="https://images-na.ssl-images-amazon.com/images/I/61RRViAYqdL.jpg" />
-              <h3 class="card-title"><strong>Codigo Limpio:</strong> Manual de estilo para el desarrollo ágil de software</h3>
-              <h4 class="card-author">Robert C. Martin</h4>
-              <p class="card-description">Clean Code, o Código Limpio, es una filosofía de desarrollo de software que consiste en aplicar técnicas simples que facilitan la escritura y lectura de un código, volviéndolo más fácil de entender</p>
-            </article>
-          </li>
-
+        <ul class="votation collapsed">
         </ul>
-      </section>
-      
-      
-        <!-- <section class="votation-card">
-          <div class="votation-icon">
-            <span class="material-icons icons-outlined expandIcon">expand_circle_down</span>
-          </div>
-            <h1 class="votation-Title">Code complete</h1>
-            <h3 class="votation-autor">Richard</h3>
-          <div class="votation-main">
-            <p class="votation-descript collapsed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum itaque repudiandae laboriosam perspiciatis? Animi corporis et optio culpa sed iure magnam quis, est mollitia officia tempora eveniet, vero similique consequatur?</p>
-          </div>
-          <div class="votation-items">
-            <span class="material-icons likeIcon">thumb_up</span>
-            <span class="material-icons dislikeIcon">thumb_down_alt</span>
-          </div> -->
-      
+        
+        <div class="data book-data ">
+          <ul class="data-list">
+          </ul>
+        </div> 
+
+      </div>
     </main>
     <footer class="footer">
       <h3 class="subtittle copy">&copy; Gromarant 2022</h3>

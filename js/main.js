@@ -30,7 +30,7 @@ let recommendedBooks = [];
 const titleInput = document.querySelector('.title-input');
 const authorInput = document.querySelector('.author-input');
 const descriptInput = document.querySelector('.descript-input');
-const formAddButton = document.querySelectorById('add-button-act');
+const formAddButton = document.getElementById('add-button-act');
 const cancelButton = document.querySelector('.button-cancel');
 const labelError = document.querySelector('.error-label');
 
@@ -101,14 +101,16 @@ formAddButton.addEventListener( 'click', ( event ) => {
 
 // renderBook function
 const makeListItem = ({  title, author, description, image  }) => (
-  `<li class="card">
-      <article>
-        <img class="card-image" src=${ image } />
-        <h3 class="card-title"><strong>${ title }:</strong> Manual de estilo para el desarrollo ágil de software</h3>
-        <h4 class="card-author">${ author }</h4>
-        <p class="card-description">${ description }</p>
-      </article>
-    </li>`
+  `<li class="data-card">
+    <div class="card_img-frame">
+      <img class="frame-image" src=${ image } />
+    </div>
+    <header class="card-header">
+      <h3 class="card-title">${ title }</h3>
+      <h3 class="card-author">${ author }</h3>
+    </header>
+    <p class="card-description">${ description }</p>
+   </li>`
   );
 
 
@@ -116,6 +118,26 @@ const renderResults = ( results ) => {
   const listItems = results.map( result => makeListItem( result )).join('\n');
   resultList.innerHTML = listItems;
 };
+
+// rendervoteCards function
+const makeListVoteItem = ({ title, author, description }) => (
+  `<li class="votation-card">
+    <div class="votation-header">
+      <h1 class="votation-Title">${ title }</h1>
+      <span class="material-icons icons-outlined expandIcon">expand_circle_down</span>
+    </div>
+    <h3 class="votation-author">${ author }</h3>
+    <div class="votation-main close">
+      <p class="votation-descript ">${ description }</p>
+    </div>
+    <div class="votation-items">
+      <span class="material-icons votation-icon likeIcon">thumb_up</span>
+      <p class="liks">${ likes}</p>
+      <span class="material-icons votation-icon dislikeIcon">thumb_down_alt</span>
+      <p class="disliks">${ dislikes }</p>
+    </div>
+  </li>`
+);
 
 // Autenticate bookSearch and throw error
 searchButton.addEventListener( 'click', (event) => {
