@@ -41,11 +41,14 @@
     width: 60px;
   }
   .header .contact {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     position: absolute;
     right: 40px;
     color: var(--Brand-color);
     text-decoration: none;
+  }
+  .header .contact:hover {
+    color: rgb(77, 194, 194);
   }
 
   main {
@@ -88,6 +91,9 @@
     color: var(--grey-color);
     padding: 10px;
     font-size: 2rem;
+  }
+  .plusIcon:hover {
+    color: var(--orange-color);
   }
 
   .new-form {
@@ -133,6 +139,13 @@
     border: 0.5px solid var(--orange-color);
     color: var(--grey-color);
   }
+  .input:hover {
+    border: 1.4px solid var(--orange-color);
+  }
+  .input:focus {
+    border: none;
+  }
+
   .button {
     background-color: var(--orange-color);
     border: none;
@@ -141,6 +154,10 @@
     margin: 0.5rem;
     color: var(--white-color);
   }
+  .button:hover {
+    opacity: 0.8;
+  }
+
   .error-label {
     margin-top: 0.8rem;
   }
@@ -345,7 +362,10 @@
     color: var(--white-color);
     text-decoration: none;
   }
-  
+  .portfolio:hover {
+    color: rgb(77, 194, 194);
+  }
+
   .close {
     display: none;
   }

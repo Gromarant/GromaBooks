@@ -16,13 +16,12 @@ let books = [
   },
   {
     title: 'Sprint',
-    author: [ 'John Zeratsky','Branden Kowitz' ],
+    author: [ 'John Zeratsky', 'Branden Kowitz' ],
     description: 'Sprint',
     image: 'https://images-na.ssl-images-amazon.com/images/I/61RRViAYqdL.jpg',
   },
 ];
 
-let recommendedBooks = [];
 //---------------------------------------------------------------------------
 
 //selection of elements
@@ -35,8 +34,7 @@ const cancelButton = document.querySelector('.button-cancel');
 const labelError = document.querySelector('.error-label');
 
 //root render books
-const itemCard = document.querySelector('.book-data');
-const resultList = document.querySelector('.list');
+const resultList = document.querySelector('.data-list');
 
 //inputs and buttons of search
 const searchIcon = document.querySelector('.plusIcon');
@@ -44,8 +42,13 @@ const searchTitleInput = document.getElementById('titleSearchInput');
 const searchAuthorInput = document.getElementById('authorSearchInput');
 const searchButton = document.querySelector('.search-button');
 const serchError = document.querySelector('.error-search');
-//---------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------
+// Display votation cards
+const votationListCards = document.querySelector('.votation');
+const likesCount = document.querySelector('.liks');
+const dislikesCount = document.querySelector('.disliks');
+//---------------------------------------------------------------------------
 //Display form
 const formSection = document.querySelector('.new-form-act');
 const showForm = () => formSection.classList.remove('collapsed');
@@ -75,6 +78,9 @@ cancelButton.addEventListener( 'click', () => {
 });
 //---------------------------------------------------------------------------
 
+let recommendedBooks = [];
+let booksToReview = [...new Set( ...recommendedBooks )];
+
 const createBook = ( title, author, descript ) => (
   {
   title: `${title}`, 
@@ -86,17 +92,48 @@ const createBook = ( title, author, descript ) => (
 // add a recommended book 
 formAddButton.addEventListener( 'click', ( event ) => {
   event.preventDefault();
-  let title = titleInput.value;
-  let author = authorInput.value;
-  let descript = descriptInput.value;
+  let titleForm = titleInput.value;
+  let authorForm = authorInput.value;
+  let descriptForm = descriptInput.value;
 
-  if( title.length > 0 && author.length > 0 || descript.length > 0 ) {
-    recommendedBooks.push( createBook( title, author, descript ) )
-    } else {
-      return labelError.innerHTML = 'debe agregar un título';
-    };
+  if( titleForm.length === 0 && authorForm.length === 0 ) {
+    return labelError.innerHTML = 'You must type a title';
+  };
+  if( recommendedBooks.includes( titleForm ) ) {
+    return labelError.innerHTML = 'This book is already in the list';
+  }
+  recommendedBooks.push( createBook( titleForm, authorForm, descriptForm ) );
+  booksToBeVoteRender( booksToReview );
 });
 
+const booksToBeVoteRender = ( results ) => {
+  const voteItems = results.values();
+  console.log(voteItems)
+  return voteItems;
+};
+// resultList.innerHTML = voteItems;
+
+// rendervoteCards function
+const makeListVoteItem = ({ title, author, description }) => (
+  `<li class="votation-card">
+    <div class="votation-header">
+      <h1 class="votation-Title">${ title }</h1>
+      <span class="material-icons icons-outlined expandIcon">expand_circle_down</span>
+    </div>
+    <h3 class="votation-author">${ author }</h3>
+    <div class="votation-main close">
+      <p class="votation-descript ">${ description }</p>
+    </div>
+    <div class="votation-items">
+      <span class="material-icons votation-icon likeIcon">thumb_up</span>
+      <p class="liks"></p>
+      <span class="material-icons votation-icon dislikeIcon">thumb_down_alt</span>
+      <p class="disliks"></p>
+    </div>
+  </li>`
+);
+  
+  //  ${ likes} ${ description } code complete console.log(recommendedBooks);
 //---------------------------------------------------------------------------
 
 // renderBook function
@@ -115,35 +152,17 @@ const makeListItem = ({  title, author, description, image  }) => (
 
 
 const renderResults = ( results ) => {
-  const listItems = results.map( result => makeListItem( result )).join('\n');
+  const listItems = results.map( result => makeListItem( result ));
   resultList.innerHTML = listItems;
 };
 
-// rendervoteCards function
-const makeListVoteItem = ({ title, author, description }) => (
-  `<li class="votation-card">
-    <div class="votation-header">
-      <h1 class="votation-Title">${ title }</h1>
-      <span class="material-icons icons-outlined expandIcon">expand_circle_down</span>
-    </div>
-    <h3 class="votation-author">${ author }</h3>
-    <div class="votation-main close">
-      <p class="votation-descript ">${ description }</p>
-    </div>
-    <div class="votation-items">
-      <span class="material-icons votation-icon likeIcon">thumb_up</span>
-      <p class="liks">${ likes}</p>
-      <span class="material-icons votation-icon dislikeIcon">thumb_down_alt</span>
-      <p class="disliks">${ dislikes }</p>
-    </div>
-  </li>`
-);
+
 
 // Autenticate bookSearch and throw error
 searchButton.addEventListener( 'click', (event) => {
   event.preventDefault();
   if( searchTitleInput.value.length === 0 && searchAuthorInput.value.length === 0 ) {
-    return serchError.innerHTML += 'Debe rellenar alguno de los campos';
+    return serchError.innerHTML = 'Debe rellenar alguno de los campos';
   }
   const foundBooks = books.filter( book => {
     const matchesTitle = searchTitleInput.value.length > 0 ? book.title.toLocaleLowerCase().includes(searchTitleInput.value.toLocaleLowerCase()) : true;
